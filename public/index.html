@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>印光书院 · 净土文教 · 高僧德范</title>
+<style>
+:root{
+  --bg:#f5f1e8; --ink:#3a3226; --ink2:#6b6154; --accent:#8a3b2e;
+  --gold:#a8873c; --card:#fbf8f1; --line:#e2d9c6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Songti SC","Noto Serif SC",STSong,serif;background:var(--bg);color:var(--ink);line-height:1.9}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* 顶栏 */
+header{border-bottom:1px solid var(--line);background:rgba(245,241,232,.92);position:sticky;top:0;z-index:10;backdrop-filter:blur(6px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:22px;letter-spacing:8px;font-weight:700}
+.logo span{color:var(--accent)}
+.nav ul{display:flex;gap:28px;list-style:none;font-size:15px;letter-spacing:2px;color:var(--ink2)}
+.nav a:hover{color:var(--accent)}
+
+/* 首屏 */
+.hero{padding:96px 0 72px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 20%,rgba(168,135,60,.10),transparent 60%);pointer-events:none}
+.hero .seal{width:72px;height:72px;margin:0 auto 24px;border:2px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--accent);letter-spacing:0}
+.hero h1{font-size:44px;letter-spacing:14px;font-weight:700}
+.hero .sub{margin-top:18px;color:var(--ink2);letter-spacing:4px;font-size:16px}
+.hero .motto{margin-top:28px;font-size:20px;letter-spacing:6px;color:var(--gold)}
+.hero .actions{margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:10px 28px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);letter-spacing:3px;font-size:15px;transition:.25s}
+.btn:hover{background:var(--accent);color:#fff}
+.btn.ghost{border-color:var(--line);color:var(--ink2)}
+.btn.ghost:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* 分隔小标 */
+.section{padding:64px 0}
+.tagline{text-align:center;color:var(--ink2);font-size:14px;letter-spacing:4px;margin-bottom:8px}
+.section h2{text-align:center;font-size:28px;letter-spacing:8px;margin-bottom:40px}
+.section h2::after{content:"";display:block;width:48px;height:2px;background:var(--gold);margin:16px auto 0}
+
+/* 卡片 */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:32px 28px;transition:.25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(58,50,38,.10)}
+.card .glyph{font-size:26px;color:var(--gold);margin-bottom:12px}
+.card h3{font-size:20px;letter-spacing:3px;margin-bottom:10px}
+.card p{color:var(--ink2);font-size:15px}
+.card .more{display:inline-block;margin-top:14px;color:var(--accent);letter-spacing:2px;font-size:14px}
+
+/* 名言 */
+.quote-band{background:linear-gradient(180deg,#efe9db,var(--bg));border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:56px 0;text-align:center}
+.quote-band blockquote{font-size:22px;letter-spacing:5px;max-width:720px;margin:0 auto}
+.quote-band cite{display:block;margin-top:16px;font-style:normal;color:var(--ink2);font-size:14px;letter-spacing:3px}
+
+/* 生平时间线 */
+.timeline{position:relative;margin:0 auto;max-width:760px;padding-left:28px;border-left:2px solid var(--line)}
+.timeline .event{position:relative;margin-bottom:30px}
+.timeline .event::before{content:"";position:absolute;left:-35px;top:10px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.timeline .year{color:var(--accent);letter-spacing:2px;font-weight:700}
+.timeline p{color:var(--ink2);font-size:15px}
+
+/* 作品列表 */
+.works{max-width:760px;margin:0 auto}
+.work{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 26px;margin-bottom:14px;display:flex;gap:18px;align-items:baseline}
+.work .w-tag{flex:none;font-size:13px;color:var(--gold);border:1px solid var(--gold);border-radius:6px;padding:2px 10px;letter-spacing:2px}
+.work b{letter-spacing:1px}
+.work span{color:var(--ink2);font-size:14px}
+
+footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--ink2);font-size:13px;letter-spacing:2px}
+footer .f-motto{color:var(--gold);font-size:15px;margin-bottom:10px;letter-spacing:4px}
+.page-head{padding:72px 0 40px;text-align:center}
+.page-head h1{font-size:36px;letter-spacing:10px}
+.page-head .p-sub{margin-top:14px;color:var(--ink2);letter-spacing:3px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media(max-width:760px){.two-col{grid-template-columns:1fr}.hero h1{font-size:32px;letter-spacing:8px}}
+.back{display:inline-block;margin-top:8px;color:var(--accent);letter-spacing:2px;font-size:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">印光<span>书院</span></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="yinguang.html">印光大师</a></li>
+        <li><a href="hongyi.html">弘一大师</a></li>
+        <li><a href="index.html#mottos">嘉言</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="seal">书</div>
+  <h1>印光书院</h1>
+  <div class="sub">敦伦尽分 · 闲邪存诚 · 诸恶莫作 · 众善奉行</div>
+  <div class="motto">一灯能除千年暗，一智能灭万年愚。</div>
+  <div class="actions">
+    <a class="btn" href="yinguang.html">印光大师</a>
+    <a class="btn ghost" href="hongyi.html">弘一大师</a>
+  </div>
+</section>
+
+<section class="quote-band">
+  <div class="wrap">
+    <blockquote>「信愿持名，是以佛力而改转凡夫业力之唯一妙法。」</blockquote>
+    <cite>—— 印光大师文钞</cite>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tagline">净土为归 · 戒律为基 · 文教化人</div>
+    <h2>书院三事</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="glyph">净</div>
+        <h3>净土宗脉</h3>
+        <p>溯自慧远庐山结社，经昙鸾、道绰、善导，至近代印光大师普摄群机，一句弥陀，家喻户晓。</p>
+        <a class="more" href="yinguang.html">了解印光大师 →</a>
+      </div>
+      <div class="card">
+        <div class="glyph">戒</div>
+        <h3>南山律学</h3>
+        <p>弘一大师中兴南山律宗，以戒为师，以艺入道，悲欣交集处，见一代高僧本怀。</p>
+        <a class="more" href="hongyi.html">了解弘一大师 →</a>
+      </div>
+      <div class="card">
+        <div class="glyph">教</div>
+        <h3>嘉言化世</h3>
+        <p>两位大师文钞、书信、偈语流传至今，字字平实恳切，是书院每日功课与修持指南。</p>
+        <a class="more" href="index.html#mottos">读今日一偈 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-band" id="mottos">
+  <div class="wrap">
+    <div class="tagline">晨昏一偈 · 照见本来</div>
+    <h2>今日一偈</h2>
+    <blockquote>「任凭一日业习，最终总要归于一句佛号。念念在道，处处皆道场。」</blockquote>
+    <cite>—— 印光大师开示</cite>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="tagline">此土垂迹 · 两番风范</div>
+    <h2>两位大师</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="glyph">僧</div>
+        <h3>印光大师（1861–1940）</h3>
+        <p>净土宗第十三代祖师。潜修普陀三十年，以文钞接引当世，倡敦伦尽分、老实念佛，影响近现代佛教至深且远。</p>
+        <a class="more" href="yinguang.html">生平 · 作品 · 年表 →</a>
+      </div>
+      <div class="card">
+        <div class="glyph">律</div>
+        <h3>弘一大师（1880–1942）</h3>
+        <p>俗名李叔同，才艺冠绝一时，中年出家，持律精严，晚号晚晴老人。一笔「南无阿弥陀佛」，写了半生慈悲。</p>
+        <a class="more" href="hongyi.html">生平 · 作品 · 年表 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-motto">敦伦尽分 · 闲邪存诚</div>
+  <div>印光书院 · 净土文教资料站 · 非营利展示</div>
+</footer>
+
+</body>
+</html>

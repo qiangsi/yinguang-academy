@@ -1,0 +1,20 @@
+apply plugin: 'com.android.application'
+
+android {
+    namespace 'com.maodou.academy'
+    compileSdk 34
+    defaultConfig {
+        applicationId "com.maodou.academy"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {}

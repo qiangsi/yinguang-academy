@@ -3,167 +3,197 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>印光书院 · 净土文教 · 高僧德范</title>
+<title>印光书院 · 净土清音 · 高僧德范</title>
 <style>
-:root{
-  --bg:#f5f1e8; --ink:#3a3226; --ink2:#6b6154; --accent:#8a3b2e;
-  --gold:#a8873c; --card:#fbf8f1; --line:#e2d9c6;
-}
+:root{--bg:#f5f1e8;--ink:#3a3226;--ink2:#6b6154;--accent:#8a3b2e;--gold:#a8873c;--card:#fbf8f1;--line:#e2d9c6}
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{font-family:"Songti SC","Noto Serif SC",STSong,serif;background:var(--bg);color:var(--ink);line-height:1.9}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-
-/* 顶栏 */
-header{border-bottom:1px solid var(--line);background:rgba(245,241,232,.92);position:sticky;top:0;z-index:10;backdrop-filter:blur(6px)}
+header{border-bottom:1px solid var(--line);background:rgba(245,241,232,.92);position:sticky;top:0;z-index:20;backdrop-filter:blur(6px)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-size:22px;letter-spacing:8px;font-weight:700}
-.logo span{color:var(--accent)}
-.nav ul{display:flex;gap:28px;list-style:none;font-size:15px;letter-spacing:2px;color:var(--ink2)}
+.logo{font-size:22px;letter-spacing:8px;font-weight:700}.logo span{color:var(--accent)}
+.nav ul{display:flex;gap:22px;list-style:none;font-size:15px;letter-spacing:2px;color:var(--ink2);flex-wrap:wrap}
 .nav a:hover{color:var(--accent)}
-
-/* 首屏 */
-.hero{padding:96px 0 72px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 20%,rgba(168,135,60,.10),transparent 60%);pointer-events:none}
-.hero .seal{width:72px;height:72px;margin:0 auto 24px;border:2px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--accent);letter-spacing:0}
-.hero h1{font-size:44px;letter-spacing:14px;font-weight:700}
-.hero .sub{margin-top:18px;color:var(--ink2);letter-spacing:4px;font-size:16px}
-.hero .motto{margin-top:28px;font-size:20px;letter-spacing:6px;color:var(--gold)}
-.hero .actions{margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-block;padding:10px 28px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);letter-spacing:3px;font-size:15px;transition:.25s}
-.btn:hover{background:var(--accent);color:#fff}
-.btn.ghost{border-color:var(--line);color:var(--ink2)}
-.btn.ghost:hover{background:var(--ink);border-color:var(--ink);color:#fff}
-
-/* 分隔小标 */
+.wind-bar{background:linear-gradient(90deg,#efe9db,#f5f1e8,#efe9db);border-bottom:1px solid var(--line);text-align:center;padding:8px 0;font-size:13px;letter-spacing:4px;color:var(--ink2)}
+.hero{padding:80px 0 64px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 15%,rgba(168,135,60,.12),transparent 60%);pointer-events:none}
+.hero .lintel{font-size:13px;letter-spacing:6px;color:var(--gold);margin-bottom:18px}
+.hero .seal{width:76px;height:76px;margin:0 auto 20px;border:2px solid var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--accent);cursor:pointer;transition:.3s;user-select:none}
+.hero .seal:active{transform:scale(.94)}
+.hero h1{font-size:44px;letter-spacing:14px}
+.hero .sutra-line{margin-top:20px;font-size:26px;letter-spacing:10px;color:var(--accent)}
+.hero .gatha{margin-top:14px;color:var(--ink2);font-size:15px;letter-spacing:3px}
+.hero .main-line{margin-top:30px;font-size:22px;letter-spacing:6px;color:var(--gold)}
+.hero .sub-line{margin-top:10px;color:var(--ink2);font-size:15px;letter-spacing:3px}
+.hero .acts{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.act{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:14px 10px;border-radius:12px;transition:.25s;min-width:86px}
+.act:hover{background:rgba(168,135,60,.08)}
+.act .a-icon{width:52px;height:52px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--accent)}
+.act span{font-size:14px;letter-spacing:3px;color:var(--ink)}
+.incense-zone{margin-top:26px;min-height:70px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.smoke{width:3px;height:0;background:linear-gradient(180deg,rgba(180,160,120,0),rgba(150,130,95,.5));border-radius:3px;transition:height 2s ease}
+.incense-lit{animation:sway 4s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.incense-msg{font-size:13px;color:var(--ink2);letter-spacing:3px;margin-top:6px;min-height:20px}
 .section{padding:64px 0}
 .tagline{text-align:center;color:var(--ink2);font-size:14px;letter-spacing:4px;margin-bottom:8px}
-.section h2{text-align:center;font-size:28px;letter-spacing:8px;margin-bottom:40px}
+.section h2{text-align:center;font-size:28px;letter-spacing:8px;margin-bottom:36px}
 .section h2::after{content:"";display:block;width:48px;height:2px;background:var(--gold);margin:16px auto 0}
-
-/* 卡片 */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:32px 28px;transition:.25s}
-.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(58,50,38,.10)}
-.card .glyph{font-size:26px;color:var(--gold);margin-bottom:12px}
-.card h3{font-size:20px;letter-spacing:3px;margin-bottom:10px}
-.card p{color:var(--ink2);font-size:15px}
-.card .more{display:inline-block;margin-top:14px;color:var(--accent);letter-spacing:2px;font-size:14px}
-
-/* 名言 */
-.quote-band{background:linear-gradient(180deg,#efe9db,var(--bg));border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:56px 0;text-align:center}
-.quote-band blockquote{font-size:22px;letter-spacing:5px;max-width:720px;margin:0 auto}
-.quote-band cite{display:block;margin-top:16px;font-style:normal;color:var(--ink2);font-size:14px;letter-spacing:3px}
-
-/* 生平时间线 */
-.timeline{position:relative;margin:0 auto;max-width:760px;padding-left:28px;border-left:2px solid var(--line)}
-.timeline .event{position:relative;margin-bottom:30px}
-.timeline .event::before{content:"";position:absolute;left:-35px;top:10px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
-.timeline .year{color:var(--accent);letter-spacing:2px;font-weight:700}
-.timeline p{color:var(--ink2);font-size:15px}
-
-/* 作品列表 */
-.works{max-width:760px;margin:0 auto}
-.work{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px 26px;margin-bottom:14px;display:flex;gap:18px;align-items:baseline}
-.work .w-tag{flex:none;font-size:13px;color:var(--gold);border:1px solid var(--gold);border-radius:6px;padding:2px 10px;letter-spacing:2px}
-.work b{letter-spacing:1px}
-.work span{color:var(--ink2);font-size:14px}
-
+.daily{background:var(--card);border:1px solid var(--line);border-radius:14px;max-width:640px;margin:0 auto;padding:36px 32px;text-align:center}
+.daily .d-char{font-size:44px;color:var(--accent);margin-bottom:10px}
+.daily .d-text{font-size:18px;letter-spacing:2px}
+.daily .d-note{margin-top:10px;color:var(--ink2);font-size:14px}
+.scenes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.scene{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;text-align:left;cursor:pointer;transition:.25s}
+.scene:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(58,50,38,.10)}
+.scene .no{font-size:12px;color:var(--gold);letter-spacing:2px}
+.scene b{display:block;font-size:18px;letter-spacing:3px;margin:6px 0}
+.scene p{color:var(--ink2);font-size:13px}
+.scene .s-act{display:inline-block;margin-top:12px;color:var(--accent);font-size:13px;letter-spacing:2px}
+.scene.playing{border-color:var(--accent);background:#fdf6ef}
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.track{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;gap:14px;align-items:center;cursor:pointer;transition:.25s}
+.track:hover{box-shadow:0 8px 20px rgba(58,50,38,.10)}
+.track .t-glyph{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--accent)}
+.track .t-body{flex:1}
+.track .t-desc{font-size:12px;color:var(--gold);letter-spacing:1px}
+.track b{font-size:16px;letter-spacing:2px}
+.track .t-note{display:block;color:var(--ink2);font-size:12px;line-height:1.5}
+.track .t-state{flex:none;font-size:12px;color:var(--accent);letter-spacing:2px}
+.track.playing{border-color:var(--accent);background:#fdf6ef}
+.masters{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.master{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px;transition:.25s}
+.master:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(58,50,38,.10)}
+.master h3{font-size:20px;letter-spacing:3px;margin-bottom:8px}
+.master .m-years{color:var(--gold);font-size:13px;letter-spacing:2px;margin-bottom:12px}
+.master p{color:var(--ink2);font-size:14px}
+.master .more{display:inline-block;margin-top:14px;color:var(--accent);letter-spacing:2px;font-size:14px}
+.qian-zone{text-align:center}
+.qian-tube{width:110px;height:130px;margin:0 auto;border:2px solid var(--accent);border-radius:10px 10px 16px 16px;display:flex;align-items:flex-end;justify-content:center;gap:5px;padding:12px;cursor:pointer;transition:.2s;background:var(--card)}
+.qian-tube:active{transform:scale(.95)}
+.qian-tube i{display:block;width:7px;height:70px;background:linear-gradient(180deg,#c9a86a,#8a6a3c);border-radius:4px}
+.qian-tube i:nth-child(2){height:80px;transform:rotate(6deg)}
+.qian-tube i:nth-child(3){height:64px;transform:rotate(-8deg)}
+.qian-tube i:nth-child(4){height:76px;transform:rotate(3deg)}
+.qian-result{margin-top:20px;font-size:17px;letter-spacing:2px;color:var(--accent);min-height:30px}
+.qian-poem{margin-top:8px;color:var(--ink2);font-size:14px;letter-spacing:1px;max-width:560px;margin-left:auto;margin-right:auto}
+.sutra-box{background:var(--card);border:1px solid var(--line);border-radius:14px;max-width:720px;margin:0 auto;padding:36px;text-align:center}
+.sutra-box .s-text{font-size:16px;letter-spacing:2px;text-align:left;line-height:2.2}
+.sutra-box .s-baihua{margin-top:24px;padding-top:20px;border-top:1px dashed var(--line);color:var(--ink2);font-size:14px;text-align:left}
 footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--ink2);font-size:13px;letter-spacing:2px}
 footer .f-motto{color:var(--gold);font-size:15px;margin-bottom:10px;letter-spacing:4px}
-.page-head{padding:72px 0 40px;text-align:center}
-.page-head h1{font-size:36px;letter-spacing:10px}
-.page-head .p-sub{margin-top:14px;color:var(--ink2);letter-spacing:3px}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-@media(max-width:760px){.two-col{grid-template-columns:1fr}.hero h1{font-size:32px;letter-spacing:8px}}
-.back{display:inline-block;margin-top:8px;color:var(--accent);letter-spacing:2px;font-size:14px}
+@media(max-width:760px){.hero h1{font-size:32px;letter-spacing:8px}.hero .sutra-line{font-size:20px;letter-spacing:6px}}
 </style>
 </head>
 <body>
 
+<div class="wind-bar">🔔 飞檐风铎 · 闻铃</div>
+
 <header>
   <div class="wrap nav">
     <div class="logo">印光<span>书院</span></div>
-    <nav>
-      <ul>
-        <li><a href="index.html">首页</a></li>
-        <li><a href="yinguang.html">印光大师</a></li>
-        <li><a href="hongyi.html">弘一大师</a></li>
-        <li><a href="index.html#mottos">嘉言</a></li>
-      </ul>
-    </nav>
+    <nav><ul>
+      <li><a href="#listen">清音</a></li>
+      <li><a href="#sutra">心经</a></li>
+      <li><a href="#qian">灵签</a></li>
+      <li><a href="yinguang.html">印光大师</a></li>
+      <li><a href="hongyi.html">弘一大师</a></li>
+    </ul></nav>
   </div>
 </header>
 
 <section class="hero">
-  <div class="seal">书</div>
-  <h1>印光书院</h1>
-  <div class="sub">敦伦尽分 · 闲邪存诚 · 诸恶莫作 · 众善奉行</div>
-  <div class="motto">一灯能除千年暗，一智能灭万年愚。</div>
-  <div class="actions">
-    <a class="btn" href="yinguang.html">印光大师</a>
-    <a class="btn ghost" href="hongyi.html">弘一大师</a>
+  <div class="lintel">周一 · 禅关</div>
+  <div class="seal" id="sealBtn" onclick="tapSeal()">印<br><span style="font-size:11px;color:var(--ink2);letter-spacing:1px">轻触印心 ↻</span></div>
+  <h1>度一切苦厄</h1>
+  <div class="sutra-line">心 经</div>
+  <div class="gatha">世间纷扰皆如梦幻泡影。燃香一炷，抚平焦躁，便无不可渡之关。</div>
+  <div class="main-line">一炷清香入梵音，万般尘扰化清凉。</div>
+  <div class="sub-line">点一炷香，照见呼吸；听一段经，让纷乱的心慢慢落定。</div>
+  <div class="acts">
+    <div class="act" onclick="lightIncense()"><div class="a-icon">香</div><span>上香</span></div>
+    <div class="act" onclick="scrollToId('sutra')"><div class="a-icon">经</div><span>听经</span></div>
+    <div class="act" onclick="playScene('still')"><div class="a-icon">坐</div><span>静坐</span></div>
+    <div class="act" onclick="scrollToId('qian')"><div class="a-icon">签</div><span>问心</span></div>
+  </div>
+  <div class="incense-zone">
+    <div class="smoke" id="smoke"></div>
+    <div class="incense-msg" id="incenseMsg">身已至此 · 心亦可稍歇</div>
   </div>
 </section>
 
-<section class="quote-band">
+<section class="section" style="padding-top:20px">
   <div class="wrap">
-    <blockquote>「信愿持名，是以佛力而改转凡夫业力之唯一妙法。」</blockquote>
-    <cite>—— 印光大师文钞</cite>
+    <div class="tagline">晨昏一偈 · 照见本来</div>
+    <h2>今日一偈</h2>
+    <div class="daily" id="dailyBox"></div>
   </div>
 </section>
 
-<section class="section">
+<section class="section" style="padding-top:0">
   <div class="wrap">
-    <div class="tagline">净土为归 · 戒律为基 · 文教化人</div>
-    <h2>书院三事</h2>
-    <div class="cards">
-      <div class="card">
-        <div class="glyph">净</div>
-        <h3>净土宗脉</h3>
-        <p>溯自慧远庐山结社，经昙鸾、道绰、善导，至近代印光大师普摄群机，一句弥陀，家喻户晓。</p>
-        <a class="more" href="yinguang.html">了解印光大师 →</a>
-      </div>
-      <div class="card">
-        <div class="glyph">戒</div>
-        <h3>南山律学</h3>
-        <p>弘一大师中兴南山律宗，以戒为师，以艺入道，悲欣交集处，见一代高僧本怀。</p>
-        <a class="more" href="hongyi.html">了解弘一大师 →</a>
-      </div>
-      <div class="card">
-        <div class="glyph">教</div>
-        <h3>嘉言化世</h3>
-        <p>两位大师文钞、书信、偈语流传至今，字字平实恳切，是书院每日功课与修持指南。</p>
-        <a class="more" href="index.html#mottos">读今日一偈 →</a>
-      </div>
+    <div class="tagline">随心入境 · 各安其时</div>
+    <h2>此刻想听什么</h2>
+    <div class="scenes">
+      <div class="scene" data-scene="morning" onclick="playScene('morning')"><div class="no">01</div><b>清晨</b><p>晨钟破晓，唤醒觉知，安住当下一息。</p><span class="s-act">随息入静 →</span></div>
+      <div class="scene" data-scene="focus" onclick="playScene('focus')"><div class="no">02</div><b>专注</b><p>收摄散乱，心随境寂，静中自有清凉。</p><span class="s-act">随息入静 →</span></div>
+      <div class="scene" data-scene="sleep" onclick="playScene('sleep')"><div class="no">03</div><b>睡前</b><p>诸缘放下，随雨夜眠，复归身心宁定。</p><span class="s-act">随息入静 →</span></div>
+      <div class="scene" data-scene="still" onclick="playScene('still')"><div class="no">04</div><b>安静片刻</b><p>无念无住，返观自性，留片刻清安与己。</p><span class="s-act">随息入静 →</span></div>
     </div>
   </div>
 </section>
 
-<section class="quote-band" id="mottos">
+<section class="section" id="listen">
   <div class="wrap">
-    <div class="tagline">晨昏一偈 · 照见本来</div>
-    <h2>今日一偈</h2>
-    <blockquote>「任凭一日业习，最终总要归于一句佛号。念念在道，处处皆道场。」</blockquote>
-    <cite>—— 印光大师开示</cite>
+    <div class="tagline">晨钟暮磬 · 澄怀观道</div>
+    <h2>为你精选</h2>
+    <div class="tracks" id="tracks"></div>
+    <div class="tagline" style="margin-top:48px">天地呼吸 · 山水清音</div>
+    <h2>自然之声</h2>
+    <div class="tracks" id="nature"></div>
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="sutra" style="background:linear-gradient(180deg,#efe9db,var(--bg));border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="tagline">静心诵读</div>
+    <h2>般若波罗蜜多心经</h2>
+    <div class="sutra-box">
+      <div class="s-text">观自在菩萨，行深般若波罗蜜多时，照见五蕴皆空，度一切苦厄。舍利子，色不异空，空不异色，色即是空，空即是色，受想行识，亦复如是。舍利子，是诸法空相，不生不灭，不垢不净，不增不减。是故空中无色，无受想行识，无眼耳鼻舌身意，无色声香味触法，无眼界，乃至无意识界，无无明，亦无无明尽，乃至无老死，亦无老死尽。无苦集灭道，无智亦无得。以无所得故，菩提萨埵，依般若波罗蜜多故，心无罣碍，无罣碍故，无有恐怖，远离颠倒梦想，究竟涅槃。三世诸佛，依般若波罗蜜多故，得阿耨多罗三藐三菩提。故知般若波罗蜜多，是大神咒，是大明咒，是无上咒，是无等等咒，能除一切苦，真实不虚。故说般若波罗蜜多咒，即说咒曰：揭谛揭谛，波罗揭谛，波罗僧揭谛，菩提萨婆诃。</div>
+      <div class="s-baihua">白话大意：观世音菩萨深入般若智慧之时，照见五蕴本性皆空，因而超越一切苦厄。万物本质是空，不生不灭、不垢不净、不增不减。心无挂碍，便无恐怖，远离一切颠倒妄想，终得究竟安乐。</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="qian">
+  <div class="wrap">
+    <div class="tagline">观音灵签 · 问心</div>
+    <h2>灵签问心</h2>
+    <div class="qian-zone">
+      <div class="qian-tube" onclick="drawQian()"><i></i><i></i><i></i><i></i></div>
+      <div class="qian-result" id="qianResult">轻触摇签 · 心诚则灵</div>
+      <div class="qian-poem" id="qianPoem"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
   <div class="wrap">
     <div class="tagline">此土垂迹 · 两番风范</div>
-    <h2>两位大师</h2>
-    <div class="cards">
-      <div class="card">
-        <div class="glyph">僧</div>
+    <h2>书院二师</h2>
+    <div class="masters">
+      <div class="master">
         <h3>印光大师（1861–1940）</h3>
-        <p>净土宗第十三代祖师。潜修普陀三十年，以文钞接引当世，倡敦伦尽分、老实念佛，影响近现代佛教至深且远。</p>
+        <div class="m-years">净土宗第十三代祖师 · 号常惭愧僧</div>
+        <p>潜修普陀三十载，以一部《文钞》接引当世。倡敦伦尽分、老实念佛，晚年定灵岩山十方净土道场规制，影响近现代佛教至深且远。</p>
         <a class="more" href="yinguang.html">生平 · 作品 · 年表 →</a>
       </div>
-      <div class="card">
-        <div class="glyph">律</div>
+      <div class="master">
         <h3>弘一大师（1880–1942）</h3>
-        <p>俗名李叔同，才艺冠绝一时，中年出家，持律精严，晚号晚晴老人。一笔「南无阿弥陀佛」，写了半生慈悲。</p>
+        <div class="m-years">南山律宗第十一代祖师 · 俗名李叔同</div>
+        <p>前半生才艺冠绝一时——《送别》传唱百年，话剧、书画、音乐皆开风气之先；后半生持律精严，中兴南山律学，绝笔「悲欣交集」四字照彻后人。</p>
         <a class="more" href="hongyi.html">生平 · 作品 · 年表 →</a>
       </div>
     </div>
@@ -172,8 +202,110 @@ footer .f-motto{color:var(--gold);font-size:15px;margin-bottom:10px;letter-spaci
 
 <footer>
   <div class="f-motto">敦伦尽分 · 闲邪存诚</div>
-  <div>印光书院 · 净土文教资料站 · 非营利展示</div>
+  <div>印光书院 · 净土清音资料站 · 非营利展示</div>
 </footer>
 
+<script>
+/* ===== 音频引擎（Web Audio 实时合成，无外部音频文件） ===== */
+let AC=null,master=null,current=null,currentType=null;
+function ac(){if(!AC){AC=new (window.AudioContext||window.webkitAudioContext)();master=AC.createGain();master.gain.value=.8;master.connect(AC.destination);}if(AC.state==='suspended')AC.resume();return AC;}
+function bell(freq,dur,vol,delay=0){const a=ac(),t=a.currentTime+delay;const g=a.createGain();g.connect(master);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+[[1,1],[2.7,.4],[5.4,.15]].forEach(([m,v])=>{const o=a.createOscillator();o.frequency.value=freq*m;const og=a.createGain();og.gain.value=v;o.connect(og);og.connect(g);o.start(t);o.stop(t+dur);});}
+function bowlDrone(){const a=ac();const g=a.createGain();g.gain.value=.25;g.connect(master);const stop=[];
+[110,164.8,220,329.6].forEach((f,i)=>{const o=a.createOscillator();o.type='sine';o.frequency.value=f+(i>1?(Math.random()*.6-.3):0);const og=a.createGain();og.gain.value=[.5,.3,.25,.12][i];o.connect(og);og.connect(g);o.start();stop.push(o);});
+const lfo=a.createOscillator(),lg=a.createGain();lfo.frequency.value=.15;lg.gain.value=.06;lfo.connect(lg);lg.connect(g.gain);lfo.start();stop.push(lfo);
+return()=>stop.forEach(o=>{try{o.stop()}catch(e){}});}
+function noiseBuf(a){const b=a.createBuffer(1,a.sampleRate*2,a.sampleRate),d=b.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;return b;}
+function rainLoop(){const a=ac();const src=a.createBufferSource();src.buffer=noiseBuf(a);src.loop=true;
+const hp=a.createBiquadFilter();hp.type='highpass';hp.frequency.value=300;
+const lp=a.createBiquadFilter();lp.type='lowpass';lp.frequency.value=900;
+const g=a.createGain();g.gain.value=.28;
+src.connect(hp);hp.connect(lp);lp.connect(g);g.connect(master);src.start();
+const iv=setInterval(()=>{if(Math.random()<.35)bell(1800+Math.random()*1200,.4,.06);},1400);
+return()=>{clearInterval(iv);try{src.stop()}catch(e){}};}
+function streamLoop(){const a=ac();const src=a.createBufferSource();src.buffer=noiseBuf(a);src.loop=true;
+const bp=a.createBiquadFilter();bp.type='bandpass';bp.frequency.value=1400;bp.Q.value=.8;
+const g=a.createGain();g.gain.value=.22;
+const lfo=a.createOscillator(),lg=a.createGain();lfo.frequency.value=.4;lg.gain.value=500;lfo.connect(lg);lg.connect(bp.frequency);lfo.start();
+src.connect(bp);bp.connect(g);g.connect(master);src.start();
+return()=>{try{src.stop();lfo.stop()}catch(e){}};}
+function chimeLoop(){const notes=[523.3,587.3,659.3,784,880];
+const iv=setInterval(()=>{if(Math.random()<.55)bell(notes[Math.floor(Math.random()*notes.length)],2.2,.10);},1800);
+bell(659.3,2.5,.12);
+return()=>clearInterval(iv);}
+function stopAll(){if(current){current();current=null;}currentType=null;document.querySelectorAll('.playing').forEach(e=>{e.classList.remove('playing');const s=e.querySelector('.t-state');if(s)s.textContent='';});}
+
+/* ===== 音轨 ===== */
+const TRACKS=[
+{id:'bell',g:'铃',desc:'铜铃余韵 · 清响涤虑',name:'清音一响',note:'以一声清响，为此刻留出安静的入口。',play:()=>{bell(660,2.5,.2);bell(880,2,.12,1.2);return()=>{};}},
+{id:'wind',g:'风',desc:'幽微竹风 · 清响涤虑',name:'风铃微响',note:'让细小的声响带走急促的念头。',loop:chimeLoop},
+{id:'bell2',g:'钟',desc:'梵钟初扣 · 余韵悠长',name:'古刹晚钟',note:'一声梵钟破夜空，唤醒梦中人。',play:()=>{bell(150,6,.3);bell(150,6,.2,3);return()=>{};}},
+{id:'bowl',g:'钵',desc:'深沉泛音 · 身心共振',name:'西藏颂钵',note:'钵音共振穿透心神，抚平起伏杂念。',loop:bowlDrone},
+{id:'qing',g:'磬',desc:'一磬开静 · 调息安住',name:'禅坐引磬',note:'清澈如水的一击，收摄散乱心。',play:()=>{bell(1250,1.8,.2);bell(1250,1.8,.15,2);return()=>{};}},
+];
+const NATURE=[
+{id:'rain',g:'雨',desc:'空山夜雨 · 净涤尘心',name:'听雨',note:'让雨声在背景里缓慢流动。',loop:rainLoop},
+{id:'eave',g:'檐',desc:'青瓦滴水 · 檐下清幽',name:'檐下春雨',note:'屋檐雨水成帘，洗净浮躁。',loop:()=>{const s=rainLoop();const iv=setInterval(()=>bell(2200+Math.random()*800,.5,.05),900);return()=>{clearInterval(iv);s();}}},
+{id:'stream',g:'泉',desc:'深山涧水 · 活水涤心',name:'清泉石上流',note:'空山不见人，但闻泉水响。',loop:streamLoop},
+];
+function renderTracks(list,el){el.innerHTML='';list.forEach(t=>{const d=document.createElement('div');d.className='track';d.id='tk-'+t.id;
+d.innerHTML=`<div class="t-glyph">${t.g}</div><div class="t-body"><div class="t-desc">${t.desc}</div><b>${t.name}</b><span class="t-note">${t.note}</span></div><div class="t-state"></div>`;
+d.onclick=()=>toggleTrack(t);el.appendChild(d);});}
+function toggleTrack(t){ac();if(currentType===t.id){stopAll();return;}stopAll();currentType=t.id;
+const el=document.getElementById('tk-'+t.id);el.classList.add('playing');el.querySelector('.t-state').textContent='播放中';
+current=t.loop?t.loop():t.play();}
+function playScene(s){ac();stopAll();
+const map={morning:'bell2',focus:'stream',sleep:'rain',still:'bowl'};
+const msgs={morning:'清晨 · 晨钟入耳，觉知渐醒',focus:'专注 · 泉声洗心，一念不乱',sleep:'睡前 · 夜雨相伴，诸缘放下',still:'静坐 · 钵音共振，安住当下'};
+currentType=map[s];
+document.querySelectorAll('.scene').forEach(e=>e.classList.toggle('playing',e.dataset.scene===s));
+document.getElementById('incenseMsg').textContent=msgs[s];
+document.querySelectorAll('.track').forEach(e=>{e.classList.remove('playing');e.querySelector('.t-state').textContent='';});
+const def=[...TRACKS,...NATURE].find(t=>t.id===map[s]);
+const tEl=document.getElementById('tk-'+map[s]);if(tEl){tEl.classList.add('playing');tEl.querySelector('.t-state').textContent='播放中';}
+current=def.loop?def.loop():def.play();}
+renderTracks(TRACKS,document.getElementById('tracks'));
+renderTracks(NATURE,document.getElementById('nature'));
+
+/* ===== 上香 / 印心 ===== */
+function lightIncense(){ac();bell(880,3,.15);const s=document.getElementById('smoke');s.style.height='46px';s.classList.add('incense-lit');
+const msgs=['一炷清香，供养十方','愿此香云，遍满法界','心香一瓣，诸缘放下','香烟起处，妄念自消'];
+document.getElementById('incenseMsg').textContent=msgs[Math.floor(Math.random()*msgs.length)];}
+function tapSeal(){ac();bell(440,3,.2);document.getElementById('sealBtn').animate([{transform:'scale(1)'},{transform:'scale(.92)'},{transform:'scale(1)'}],{duration:400});}
+
+/* ===== 今日一偈（按日期流转） ===== */
+const DAILIES=[
+{c:'静',t:'心经清音，今日安然。为生活留一刻安定。'},
+{c:'念',t:'一句弥陀，念念分明。当下即是道场。'},
+{c:'戒',t:'诸恶莫作，众善奉行。自净其意，是诸佛教。'},
+{c:'定',t:'不取于相，如如不动。'},
+{c:'慧',t:'照见五蕴皆空，度一切苦厄。'},
+{c:'恩',t:'感恩一切因缘，当下即是圆满。'},
+{c:'放',t:'万般带不去，唯有业随身。放下便是自在。'},
+];
+(function(){const d=DAILIES[new Date().getDate()%DAILIES.length];
+document.getElementById('dailyBox').innerHTML=`<div class="d-char">${d.c}</div><div class="d-text">「${d.t}」</div><div class="d-note">随日期流转 · 每日一偈</div>`;})();
+
+/* ===== 灵签 ===== */
+const QIANS=[
+{n:'第一签 · 上签',poem:'开天辟地作乾坤，日月星辰定太平。风调雨顺人安乐，万物从今得生成。',jie:'大吉。诸事顺遂，如日东升，宜勇猛精进。'},
+{n:'第七签 · 上签',poem:'云开月正圆，光辉遍大千。何须多问卜，福自降人间。',jie:'吉。云开见月，前景光明，但行好事。'},
+{n:'第十五签 · 中签',poem:'行人久历风波苦，一日安然见此江。莫道前程无限险，静心自有好风光。',jie:'平。历经磨砺将见坦途，守静待时为宜。'},
+{n:'第二十二签 · 中签',poem:'旱时田里逢甘露，天遣神龙降雨来。物遂人愿皆有定，从今更莫苦疑猜。',jie:'中吉。久旱逢甘霖，所求将应，勿再犹疑。'},
+{n:'第四十三签 · 上签',poem:'一帆顺风送舟行，水中捞月本非真。脚踏实地功夫到，自在清安不问人。',jie:'吉。脚踏实地，真实修行，自得受用。'},
+{n:'第五十六签 · 中签',poem:'欲去长江水阔茫，行舟把定未遭风。过滩船行方安稳，且守从容莫慌张。',jie:'平。把定舵、慢行舟，稳中自有进境。'},
+{n:'第八十六签 · 上签',poem:'一舟行货好招邀，积少成多自富饶。常把他人比自己，管须日后胜今朝。',jie:'大吉。将心比心，广结善缘，日后自胜今朝。'},
+];
+let qianBusy=false;
+function drawQian(){if(qianBusy)return;qianBusy=true;ac();
+document.querySelector('.qian-tube').animate([{transform:'rotate(0)'},{transform:'rotate(-8deg)'},{transform:'rotate(8deg)'},{transform:'rotate(-5deg)'},{transform:'rotate(0)'}],{duration:700});
+bell(1100,1.2,.15,.1);bell(900,1.5,.12,.6);bell(1300,1.8,.1,1.2);
+document.getElementById('qianResult').textContent='摇签中…';document.getElementById('qianPoem').textContent='';
+setTimeout(()=>{const q=QIANS[Math.floor(Math.random()*QIANS.length)];
+document.getElementById('qianResult').textContent=q.n;
+document.getElementById('qianPoem').innerHTML=q.poem+'<br>—— '+q.jie;qianBusy=false;},1600);}
+
+function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+</script>
 </body>
 </html>
